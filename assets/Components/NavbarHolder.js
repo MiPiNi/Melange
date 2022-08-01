@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import { Button } from "react-native-web";
+import { View } from "react-native-web";
+import { Image } from "react-native-web";
 
 export default function NavbarHolder() {
 	return (
-		<div
+		<View
 			style={{
 				float: "left",
-				width: "10%",
-				height: "80%",
+				flexDirection: "column",
+				width: "100%",
+				height: "100%",
 			}}
 			className="right"
+			accesibilityRole={"imagebutton"}
 		>
 			{
 				<img
@@ -17,6 +21,6 @@ export default function NavbarHolder() {
 					className="rollOut"
 				></img>
 			}
-		</div>
+		</View>
 	);
 }

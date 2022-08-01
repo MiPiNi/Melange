@@ -1,15 +1,20 @@
-fs = require("fs");
+import raw from "./assets/quests.js";
+
+const usedNumbers = [];
+
 function getRandomLine() {
-	var data = fs.readFileSync("assets/cards", "utf8");
-	var lines = data.split("\n");
+	let lines = raw;
+	let rand = Math.floor(Math.random() * lines.length);
+	while (rand in usedNumbers) {
+		rand = Math.floor(Math.random() * lines.length);
+	}
+
 	return lines[Math.floor(Math.random() * lines.length)];
 }
-function getCards() {
-	cards = [];
+export function getCards() {
+	let cards = [];
 	for (let i = 0; i < 10; i++) {
 		cards[i] = getRandomLine();
 	}
 	return cards;
 }
-
-print(getCards());

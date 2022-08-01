@@ -12,7 +12,7 @@ import { getCards } from "./cardsGenerator.js";
 
 export default function App() {
 	return (
-		<div
+		<View
 			style={{
 				flex: 1,
 				display: "inline",
@@ -23,24 +23,22 @@ export default function App() {
 			<Players numPlayers={4} names={["Maciuś", "Krzyś"]} />
 			{/* up^ wystarczy wyciagac dlugosc listy z tego menu od dodawania graczy,
 			pozniej prosta matma zeby wiedziec ile graczy na dol ile na gore */}
-			<div
+			<View
 				style={{
 					float: "left",
 					width: "90%",
 					height: "80%",
 				}}
 				className="cardContainer"
+				nativeID="cardcontainer"
 			>
 				<Swiper
-					cards={getCards()}
-					// cards={["test1", "test2", "test3", "test4", "test5"]}
-					style={{
-						height: "778px",
-						width: "1419px",
-						float: "left",
-						alignItems: "center",
-						justifyContent: "center",
+					containerStyle={{
+						height: "100%",
+						width: "100%",
+						overflow: "hidden",
 					}}
+					cards={getCards()}
 					renderCard={(card) => {
 						return <Card card={card} />;
 					}}
@@ -58,18 +56,20 @@ export default function App() {
 					backgroundColor={"transparent"}
 					showSecondCard={false}
 				></Swiper>
-			</div>
-			<button
-				style={{
-					border: "none",
-				}}
-				onClick={console.log("clicked")}
-			>
-				<NavbarHolder />
-			</button>
+			</View>
+			<View style={{ width: "10%", height: "80%" }}>
+				<button
+					style={{
+						border: "none",
+					}}
+					onClick={console.log("clicked")}
+				>
+					<NavbarHolder />
+				</button>
+			</View>
 
 			<Players numPlayers={4} />
-		</div>
+		</View>
 	);
 }
 

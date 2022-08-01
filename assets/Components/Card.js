@@ -5,27 +5,25 @@ import image from "../imgs/Avers.png";
 
 export default function Card(props) {
 	return (
-		<div
+		<View
 			style={{
-				height: "90%",
-				width: "80%",
-				display: "flex",
+				height: "778px",
+				width: "1419px",
 				alignItems: "center",
 				justifyContent: "center",
 				backgroundImage: `url(${image})`,
 				backgroundSize: "cover",
 			}}
 		>
-			<h1
+			<Text
 				style={{
-					margin: "0",
-					padding: "0",
 					textAlign: "center",
-					fontSize: 50,
+					fontSize: "6vh",
+					userSelect: "none",
 				}}
 			>
 				{props.card}
-			</h1>
-		</div>
+			</Text>
+		</View>
 	);
 }

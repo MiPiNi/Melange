@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import image from "../imgs/player_in_game.png";
+import { Text } from "react-native-web";
+import { View } from "react-native-web";
 
 function Player(props) {
 	return (
 		<>
-			<div
+			<View
 				className="player"
 				style={{
+					margin: "0",
 					display: "flex",
 					width: "273px",
 					height: "87px",
@@ -16,14 +19,14 @@ function Player(props) {
 					backgroundImage: `url(${image})`,
 				}}
 			>
-				<h2
+				<Text
 					style={{
 						color: "lightgoldenrodyellow",
 					}}
 				>
 					{props.name}
-				</h2>
-			</div>
+				</Text>
+			</View>
 		</>
 	);
 }
@@ -41,16 +44,16 @@ function createPlayers(num, props) {
 	return arr;
 }
 
-export default function PlayerLine(props) {
+export default function Players(props) {
 	const numPlayers = props.numPlayers;
 	const names = props.names;
 	const players = createPlayers(numPlayers, props);
 
 	return (
-		<div
+		<View
 			style={{
-				display: "flex",
-				height: "87px",
+				flexDirection: "row",
+				height: "auto",
 				gap: "1%",
 				justifyContent: "center",
 				gridTemplate: "87px 273px",
@@ -59,10 +62,10 @@ export default function PlayerLine(props) {
 			}}
 		>
 			{players}
-		</div>
+		</View>
 	);
 }
-PlayerLine.defaultProps = {
+Players.defaultProps = {
 	numPlayers: 4,
 	names: [1, 2, 3, 4],
 };
