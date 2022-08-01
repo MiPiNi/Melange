@@ -1,29 +1,25 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { render } from "react-dom";
+import { StyleSheet, Text, TurboModuleRegistry, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { ImageBackground, TouchableWithoutFeedback } from "react-native-web";
+import Player from "./assets/Components/Player";
+import PlayersLine from "./assets/Components/PlayersLine";
+
 import avers from "./assets/imgs/Avers.png";
 
 export default function App() {
 	return (
-		<div
-			style={{
-				flex: 1,
-				backgroundImage: "radial-gradient(orange, lightyellow)",
+		<View style={styles.main}>
+			{() => {
+				const arr = [];
+				for (let i = 0; i < numPlayers; i++) {
+					//let name = getFromNavBar() cos w tym stylu trzeba
+					arr.push(<Player name={"Maciuś lat 12"} />);
+				}
+				return <tbody>{arr}</tbody>;
 			}}
-			className="main"
-		>
-			<div
-				style={{
-					float: "left",
-					width: "100%",
-					height: "10%",
-				}}
-				className="top"
-			>
-				TOP
-			</div>
 			<div
 				style={{
 					float: "left",
@@ -71,17 +67,7 @@ export default function App() {
 					></img>
 				}
 			</div>
-			<div
-				style={{
-					float: "left",
-					width: "100%",
-					height: "10%",
-				}}
-				className="bottom"
-			>
-				BOTTOM
-			</div>
-		</div>
+		</View>
 	);
 }
 
@@ -102,20 +88,21 @@ const styles = StyleSheet.create({
 	cardContainer: {
 		display: "grid",
 		float: "left",
-		width: "90%",
-		height: "80%",
+		width: "1420px",
+		height: "780px",
 		justifyContent: "center",
 	},
 	card: {
+		width: "1420px",
+		height: "780px",
+		justifyContent: "center",
+		backgroundImage: `url(${avers})`,
+		backgroundSize: "cover",
+	},
+	text: {
 		height: "300px",
 		width: "500px",
 		justifyContent: "center",
-		backgroundImage: `url(${avers})`,
-		backgroundSize: "100%",
-	},
-	text: {
-		margin: "0",
-		padding: "0",
 		textAlign: "center",
 		fontSize: 50,
 		color: "white",
