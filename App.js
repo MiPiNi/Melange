@@ -4,22 +4,25 @@ import { render } from "react-dom";
 import { StyleSheet, Text, TurboModuleRegistry, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { ImageBackground, TouchableWithoutFeedback } from "react-native-web";
-import Player from "./assets/Components/Player";
-import PlayersLine from "./assets/Components/PlayersLine";
-
+import Card from "./assets/Components/Card";
+import NavbarHolder from "./assets/Components/NavbarHolder";
+import Players from "./assets/Components/Players";
 import avers from "./assets/imgs/Avers.png";
+import { getCards } from "./cardsGenerator.js";
 
 export default function App() {
 	return (
-		<View style={styles.main}>
-			{() => {
-				const arr = [];
-				for (let i = 0; i < numPlayers; i++) {
-					//let name = getFromNavBar() cos w tym stylu trzeba
-					arr.push(<Player name={"Maciuś lat 12"} />);
-				}
-				return <tbody>{arr}</tbody>;
+		<div
+			style={{
+				flex: 1,
+				display: "inline",
+				justifyContent: "center",
+				backgroundImage: "radial-gradient(orange, lightyellow)",
 			}}
+		>
+			<Players numPlayers={4} names={["Maciuś", "Krzyś"]} />
+			{/* up^ wystarczy wyciagac dlugosc listy z tego menu od dodawania graczy,
+			pozniej prosta matma zeby wiedziec ile graczy na dol ile na gore */}
 			<div
 				style={{
 					float: "left",
@@ -29,13 +32,17 @@ export default function App() {
 				className="cardContainer"
 			>
 				<Swiper
-					cards={["test1", "test2", "test3", "test4", "test5"]}
+					cards={getCards()}
+					// cards={["test1", "test2", "test3", "test4", "test5"]}
+					style={{
+						height: "778px",
+						width: "1419px",
+						float: "left",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
 					renderCard={(card) => {
-						return (
-							<View style={styles.card}>
-								<Text style={styles.text}>{card}</Text>
-							</View>
-						);
+						return <Card card={card} />;
 					}}
 					onSwiped={(cardIndex) => {
 						console.log(cardIndex);
@@ -52,22 +59,17 @@ export default function App() {
 					showSecondCard={false}
 				></Swiper>
 			</div>
-			<div
+			<button
 				style={{
-					float: "left",
-					width: "10%",
-					height: "80%",
+					border: "none",
 				}}
-				className="right"
+				onClick={console.log("clicked")}
 			>
-				{
-					<img
-						src={require("./assets/imgs/roll_out.png")}
-						className="rollOut"
-					></img>
-				}
-			</div>
-		</View>
+				<NavbarHolder />
+			</button>
+
+			<Players numPlayers={4} />
+		</div>
 	);
 }
 
@@ -78,23 +80,17 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		backgroundImage: "radial-gradient(orange, lightyellow)",
 	},
-	top: {
-		margin: "0",
-		padding: "0",
-		float: "left",
-		width: "100%",
-		height: "10%",
-	},
 	cardContainer: {
-		display: "grid",
+		display: "flex",
 		float: "left",
-		width: "1420px",
-		height: "780px",
+		alignItems: "center",
 		justifyContent: "center",
 	},
 	card: {
-		width: "1420px",
-		height: "780px",
+		display: "flex",
+		width: "50%",
+		height: "60%",
+		alignItems: "center",
 		justifyContent: "center",
 		backgroundImage: `url(${avers})`,
 		backgroundSize: "cover",
@@ -106,19 +102,5 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontSize: 50,
 		color: "white",
-	},
-	right: {
-		margin: "0",
-		padding: "0",
-		float: "left",
-		width: "10%",
-		height: "80%",
-	},
-	bottom: {
-		margin: "0",
-		padding: "0",
-		float: "left",
-		width: "100%",
-		height: "10%",
 	},
 });
