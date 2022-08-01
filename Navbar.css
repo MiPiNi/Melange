@@ -1,0 +1,75 @@
+*,*::after, *::before{
+    margin:0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 50%;
+}
+body{
+    font-size:1,6rem;
+}
+.nav{
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height:100%;
+    width:720px;
+    background-image: url("assets/imgs/settings_bar.png");
+}
+.nick{
+    object-position: center;
+    text-align: center;
+    width: 500px;
+    height: 75px;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 0 15px;
+}
+.nick::placeholder{
+    font-size:300%;
+}
+.back{
+    margin-top: 5px;
+    margin-right: 5px;
+    top:0;
+    left:0;
+    background-image: url("assets/imgs/roll_up.png");
+    width: 100px;
+    height: 100px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+.reset{
+    margin-top: 5px;
+    margin-right: 5px;
+    top:0;
+    left:0;
+    background-image: url("assets/imgs/reset.png");
+    width: 100px;
+    height: 100px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+label{
+    position: relative;
+}
+.add_player{
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 80px;
+    background-image: url("assets/imgs/add_player.png");
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right:0px;
+    background-color:transparent;
+    border: 0px;
+}
