@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Melange",
+    "slug": "Melange",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
