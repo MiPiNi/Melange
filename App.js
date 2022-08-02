@@ -4,16 +4,20 @@ import { StyleSheet, Text, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { ImageBackground, TouchableWithoutFeedback } from "react-native-web";
 import avers from "./assets/imgs/Avers.png";
+import { TextInput } from "react-native";
+import Navbar from "./components/navbar";
 
 export default function App() {
 	return (
 		<div
+		
 			style={{
 				flex: 1,
-				backgroundImage: "radial-gradient(orange, lightyellow)",
+				backgroundColor: "#fee715",
 			}}
 			className="main"
 		>
+			<Navbar/>
 			<div
 				style={{
 					float: "left",
@@ -90,7 +94,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		display: "inline",
 		justifyContent: "center",
-		backgroundImage: "radial-gradient(orange, lightyellow)",
+		backgroundColor: "fee715",
 	},
 	top: {
 		margin: "0",
@@ -107,8 +111,8 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	card: {
-		height: "300px",
-		width: "500px",
+		height: "780px",
+		width: "1420px",
 		justifyContent: "center",
 		backgroundImage: `url(${avers})`,
 		backgroundSize: "100%",
