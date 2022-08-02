@@ -1,9 +1,10 @@
 import React from "react";
+import { StyleSheet, Text, TurboModuleRegistry, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import Card from "./assets/Components/Card";
-import Players from "./assets/Components/Players";
+import avers from "./assets/imgs/Avers.png";
 import { getCards } from "./cardsGenerator";
-import { View } from "react-native";
+import bgimage from "./assets/imgs/background_image.png";
 
 export default function App() {
 	return (
@@ -12,6 +13,7 @@ export default function App() {
 				flex: 1,
 				justifyContent: "center",
 				backgroundColor: "#fee715",
+				backgroundImage: `url(${bgimage})`,
 			}}
 		>
 			<View
@@ -27,6 +29,7 @@ export default function App() {
 						overflow: "visible",
 					}}
 					cardStyle={{
+						fontFamily: "Montserrat, sans-serif",
 						display: "flex",
 						width: "100%",
 						height: "100%",

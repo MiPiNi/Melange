@@ -1,6 +1,7 @@
-import React from "react";
-import { Text, Image, useWindowDimensions, View } from "react-native";
-import { StyleSheet } from "react-native";
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { Text, View } from "react-native";
+import image from "../imgs/Avers.png";
 
 function Averse() {
 	return (
