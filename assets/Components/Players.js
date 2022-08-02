@@ -1,62 +1,28 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React from "react";
 import image from "../imgs/player_in_game.png";
-import { Text } from "react-native-web";
-import { View } from "react-native-web";
-import { IconButton, Button } from "@mui/material";
+import { Text, View, Image, StyleSheet } from "react-native";
+import Button from "@mui/material/Button";
 
 function toggleNavbar() {
 	alert("toggleNavbar");
 }
 
-function NavbarBtn() {
+const NavbarBtn = () => {
 	return (
-		<View
-			style={{
-				margin: "auto",
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
-			}}
-		>
-			<Button
-				onClick={toggleNavbar}
-				style={{
-					backgroundColor: "transparent",
-					marginLeft: "10%",
-				}}
-			>
-				<img src={require("../imgs/roll_out.png")}></img>
+		<View styles={styles.btnView}>
+			<Button onClick={toggleNavbar} styles={styles.btn}>
+				<Image source={require("../imgs/roll_out.png")}></Image>
+				{/* <img src={require("../imgs/roll_out.png")}></img>*/}
 			</Button>
 		</View>
 	);
-}
+};
 
 function Player(props) {
 	return (
 		<>
-			<View
-				className="player"
-				style={{
-					margin: "auto",
-					display: "flex",
-					width: "273px",
-					height: "87px",
-					alignItems: "center",
-					justifyContent: "center",
-					backgroundImage: `url(${image})`,
-				}}
-			>
-				<Text
-					style={{
-						color: "lightgoldenrodyellow",
-						fontSize: "2vh",
-						maxWidth: "265px",
-						maxHeight: "85px",
-					}}
-				>
-					{props.name}
-				</Text>
+			<View className="player" style={styles.playerView}>
+				<Text style={styles.playerText}>{props.name}</Text>
 			</View>
 		</>
 	);
@@ -69,7 +35,6 @@ function createPlayers(num, props) {
 	const arr = [];
 	for (let i = 0; i < num; i++) {
 		console.log("test");
-		//let name = getFromNavBar() cos w tym stylu trzeba
 		arr.push(<Player key={i} name={props.names[i]} />);
 	}
 	return arr;
@@ -82,15 +47,7 @@ export default function Players(props) {
 	const players = createPlayers(numPlayers, props);
 
 	return (
-		<View
-			style={{
-				flexDirection: "row",
-				justifyContent: "center safe",
-				gridTemplate: "87px 273px",
-				width: "100%",
-				margin: "0 auto",
-			}}
-		>
+		<View style={styles.playersListView}>
 			{players}
 			{isTop ? <NavbarBtn /> : null}
 		</View>
@@ -101,3 +58,37 @@ Players.defaultProps = {
 	names: [1, 2, 3, 4],
 	isTop: false,
 };
+
+const styles = StyleSheet.create({
+	btnView: {
+		margin: "auto",
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	btn: {
+		backgroundColor: "transparent",
+		marginLeft: "10%",
+	},
+	playerView: {
+		margin: "auto",
+		display: "flex",
+		width: "273px",
+		height: "87px",
+		alignItems: "center",
+		justifyContent: "center",
+		backgroundImage: `url(${image})`,
+	},
+	playerText: {
+		color: "lightgoldenrodyellow",
+		maxWidth: "265px",
+		maxHeight: "85px",
+	},
+	playersListView: {
+		flexDirection: "row",
+		justifyContent: "center safe",
+		gridTemplate: "87px 273px",
+		width: "100%",
+		margin: "0 auto",
+	},
+});

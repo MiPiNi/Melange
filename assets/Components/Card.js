@@ -1,29 +1,36 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import { Text, View } from "react-native";
-import image from "../imgs/Avers.png";
-import FitText from "@kennethormandy/react-fittext";
+import React from "react";
+import { Text, Image, useWindowDimensions, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 function Averse() {
-	return <img src={image} style={{ pointerEvents: "none" }}></img>;
+	return (
+		<Image
+			source={require("../imgs/Avers.png")}
+			style={{ height: "80%", width: "80%" }}
+			resizeMode={"contain"}
+		></Image>
+	);
 }
 
 export default function Card(props) {
+	const { fontScale } = useWindowDimensions();
 	return (
 		<>
 			<Averse />
-			<Text
-				style={{
-					fontSize: "5vh",
-					color: "white",
-					textAlign: "center",
-					userSelect: "none",
-					position: "absolute",
-					maxWidth: "1390px",
-				}}
-			>
+			<Text selectable={false} style={styles(fontScale).cardText}>
 				{props.card}
 			</Text>
 		</>
 	);
 }
+
+const styles = (fontScale) =>
+	StyleSheet.create({
+		cardText: {
+			fontSize: 50 / fontScale,
+			color: "white",
+			textAlign: "center",
+			position: "absolute",
+			maxWidth: 1300,
+		},
+	});
