@@ -1,26 +1,35 @@
 import React, { Component } from "react";
-import { Button } from "react-native-web";
 import { View } from "react-native-web";
 import { Image } from "react-native-web";
+import bg from "../imgs/roll_out.png";
+import { IconButton, Button } from "@mui/material";
+
+function toggleNavbar() {
+	alert("toggleNavbar");
+}
 
 export default function NavbarHolder() {
 	return (
 		<View
 			style={{
-				float: "left",
-				flexDirection: "column",
-				width: "100%",
+				position: "fixed",
+				right: "1rem",
+				top: "1.5rem",
+				width: "10%",
 				height: "100%",
+				margin: "0",
 			}}
-			className="right"
-			accesibilityRole={"imagebutton"}
 		>
-			{
-				<img
-					src={require("../imgs/roll_out.png")}
-					className="rollOut"
-				></img>
-			}
+			<Button
+				onClick={toggleNavbar}
+				style={{
+					backgroundColor: "transparent",
+					margin: "0",
+					padding: "0",
+				}}
+			>
+				<img src={require("../imgs/roll_out.png")}></img>
+			</Button>
 		</View>
 	);
 }

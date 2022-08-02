@@ -9,46 +9,24 @@ import NavbarHolder from "./assets/Components/NavbarHolder";
 import Players from "./assets/Components/Players";
 import avers from "./assets/imgs/Avers.png";
 import { TextInput } from "react-native";
-import Navbar from "./components/navbar";
-
-export default function App() {
-	return (
-		<div
-		
-			style={{
-				flex: 1,
-				backgroundColor: "#fee715",
-import { getCards } from "./cardsGenerator.js";
+import Navbar from "./assets/Components/navbar";
+import { getCards } from "./cardsGenerator";
 
 export default function App() {
 	return (
 		<View
 			style={{
 				flex: 1,
-				display: "inline",
 				justifyContent: "center",
-				backgroundImage: "radial-gradient(orange, lightyellow)",
+				backgroundColor: "#fee715",
 			}}
 		>
-			<Navbar/>
-			<div
-				style={{
-					float: "left",
-					width: "100%",
-					height: "10%",
-				}}
-				className="top"
-			>
-				TOP
-			</div>
-			<div
-			<Players numPlayers={4} names={["Maciuś", "Krzyś"]} />
+			<Players numPlayers={4} names={["Maciuś", "Krzyś"]} isTop={true} />
 			{/* up^ wystarczy wyciagac dlugosc listy z tego menu od dodawania graczy,
 			pozniej prosta matma zeby wiedziec ile graczy na dol ile na gore */}
 			<View
 				style={{
-					float: "left",
-					width: "90%",
+					width: "100%",
 					height: "80%",
 				}}
 				className="cardContainer"
@@ -56,10 +34,17 @@ export default function App() {
 			>
 				<Swiper
 					containerStyle={{
-						height: "100%",
-						width: "100%",
 						overflow: "hidden",
 					}}
+					cardStyle={{
+						display: "flex",
+						width: "100%",
+						height: "100%",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+					cardVerticalMargin={0}
+					cardHorizontalMargin={0}
 					cards={getCards()}
 					renderCard={(card) => {
 						return <Card card={card} />;
@@ -76,20 +61,8 @@ export default function App() {
 					cardIndex={0}
 					verticalSwipe={false}
 					backgroundColor={"transparent"}
-					showSecondCard={false}
 				></Swiper>
 			</View>
-			<View style={{ width: "10%", height: "80%" }}>
-				<button
-					style={{
-						border: "none",
-					}}
-					onClick={console.log("clicked")}
-				>
-					<NavbarHolder />
-				</button>
-			</View>
-
 			<Players numPlayers={4} />
 		</View>
 	);

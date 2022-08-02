@@ -2,28 +2,28 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import image from "../imgs/Avers.png";
+import FitText from "@kennethormandy/react-fittext";
+
+function Averse() {
+	return <img src={image} style={{ pointerEvents: "none" }}></img>;
+}
 
 export default function Card(props) {
 	return (
-		<View
-			style={{
-				height: "778px",
-				width: "1419px",
-				alignItems: "center",
-				justifyContent: "center",
-				backgroundImage: `url(${image})`,
-				backgroundSize: "cover",
-			}}
-		>
+		<>
+			<Averse />
 			<Text
 				style={{
+					fontSize: "5vh",
+					color: "white",
 					textAlign: "center",
-					fontSize: "6vh",
 					userSelect: "none",
+					position: "absolute",
+					maxWidth: "1390px",
 				}}
 			>
 				{props.card}
 			</Text>
-		</View>
+		</>
 	);
 }

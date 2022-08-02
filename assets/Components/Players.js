@@ -3,6 +3,34 @@ import { render } from "react-dom";
 import image from "../imgs/player_in_game.png";
 import { Text } from "react-native-web";
 import { View } from "react-native-web";
+import { IconButton, Button } from "@mui/material";
+
+function toggleNavbar() {
+	alert("toggleNavbar");
+}
+
+function NavbarBtn() {
+	return (
+		<View
+			style={{
+				margin: "auto",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+			}}
+		>
+			<Button
+				onClick={toggleNavbar}
+				style={{
+					backgroundColor: "transparent",
+					marginLeft: "10%",
+				}}
+			>
+				<img src={require("../imgs/roll_out.png")}></img>
+			</Button>
+		</View>
+	);
+}
 
 function Player(props) {
 	return (
@@ -10,7 +38,7 @@ function Player(props) {
 			<View
 				className="player"
 				style={{
-					margin: "0",
+					margin: "auto",
 					display: "flex",
 					width: "273px",
 					height: "87px",
@@ -22,6 +50,9 @@ function Player(props) {
 				<Text
 					style={{
 						color: "lightgoldenrodyellow",
+						fontSize: "2vh",
+						maxWidth: "265px",
+						maxHeight: "85px",
 					}}
 				>
 					{props.name}
@@ -47,25 +78,26 @@ function createPlayers(num, props) {
 export default function Players(props) {
 	const numPlayers = props.numPlayers;
 	const names = props.names;
+	const isTop = props.isTop;
 	const players = createPlayers(numPlayers, props);
 
 	return (
 		<View
 			style={{
 				flexDirection: "row",
-				height: "auto",
-				gap: "1%",
-				justifyContent: "center",
+				justifyContent: "center safe",
 				gridTemplate: "87px 273px",
 				width: "100%",
-				height: "10%",
+				margin: "0 auto",
 			}}
 		>
 			{players}
+			{isTop ? <NavbarBtn /> : null}
 		</View>
 	);
 }
 Players.defaultProps = {
 	numPlayers: 4,
 	names: [1, 2, 3, 4],
+	isTop: false,
 };
