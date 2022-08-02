@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import image from "../imgs/Avers.png";
-import FitText from "@kennethormandy/react-fittext";
 
 function Averse() {
 	return <img src={image} style={{ pointerEvents: "none" }}></img>;
