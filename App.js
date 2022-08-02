@@ -1,16 +1,10 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { render } from "react-dom";
 import { StyleSheet, Text, TurboModuleRegistry, View } from "react-native";
 import Swiper from "react-native-deck-swiper";
-import { ImageBackground, TouchableWithoutFeedback } from "react-native-web";
 import Card from "./assets/Components/Card";
-import NavbarHolder from "./assets/Components/NavbarHolder";
-import Players from "./assets/Components/Players";
 import avers from "./assets/imgs/Avers.png";
-import { TextInput } from "react-native";
-import Navbar from "./assets/Components/navbar";
 import { getCards } from "./cardsGenerator";
+import bgimage from "./assets/imgs/background_image.png";
 
 export default function App() {
 	return (
@@ -19,11 +13,9 @@ export default function App() {
 				flex: 1,
 				justifyContent: "center",
 				backgroundColor: "#fee715",
+				backgroundImage: `url(${bgimage})`,
 			}}
 		>
-			<Players numPlayers={4} names={["Maciuś", "Krzyś"]} isTop={true} />
-			{/* up^ wystarczy wyciagac dlugosc listy z tego menu od dodawania graczy,
-			pozniej prosta matma zeby wiedziec ile graczy na dol ile na gore */}
 			<View
 				style={{
 					width: "100%",
@@ -34,9 +26,10 @@ export default function App() {
 			>
 				<Swiper
 					containerStyle={{
-						overflow: "hidden",
+						overflow: "visible",
 					}}
 					cardStyle={{
+						fontFamily: "Montserrat, sans-serif",
 						display: "flex",
 						width: "100%",
 						height: "100%",
@@ -63,7 +56,6 @@ export default function App() {
 					backgroundColor={"transparent"}
 				></Swiper>
 			</View>
-			<Players numPlayers={4} />
 		</View>
 	);
 }
