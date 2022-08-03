@@ -42,6 +42,24 @@ export default class Card extends React.Component {
 	componentDidMount() {
 		this.loadFonts();
 	}
+	Avers() {
+		return (
+			<Image
+				source={require("../imgs/Avers.png")}
+				style={{ height: "80%", width: "80%" }}
+				resizeMode={"contain"}
+			></Image>
+		);
+	}
+	Revers() {
+		return (
+			<Image
+				source={require("../imgs/Revers.png")}
+				style={{ height: "80%", width: "80%" }}
+				resizeMode={"contain"}
+			></Image>
+		);
+	}
 	render() {
 		return (
 			<View
@@ -53,11 +71,7 @@ export default class Card extends React.Component {
 					justifyContent: "center",
 				}}
 			>
-				<Image
-					source={require("../imgs/Avers.png")}
-					style={{ height: "80%", width: "80%" }}
-					resizeMode={"contain"}
-				></Image>
+				{this.props.isFirstSwipe ? <this.Revers /> : <this.Avers />}
 				<Text selectable={false} style={styles.cardText}>
 					{this.props.card}
 				</Text>

@@ -3,9 +3,17 @@ import { View, ImageBackground } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import Card from "./assets/Components/Card";
 import { getCards } from "./cardsGenerator";
-import bgimage from "./assets/imgs/background_image.png";
+import * as ScreenOrientation from "expo-screen-orientation";
+
+async function changeScreenOrientation() {
+	await ScreenOrientation.lockAsync(
+		ScreenOrientation.OrientationLock.LANDSCAPE
+	);
+}
 
 export default function App() {
+	changeScreenOrientation();
+	let isFirstSwipe = true;
 	return (
 		<ImageBackground
 			source={require("./assets/imgs/background_image.png")}
@@ -31,12 +39,14 @@ export default function App() {
 						}}
 						cardVerticalMargin={0}
 						cardHorizontalMargin={0}
-						cards={getCards()}
+						cards={getCards(isFirstSwipe)}
 						renderCard={(card) => {
-							return <Card card={card} />;
+							return (
+								<Card card={card} isFirstSwipe={isFirstSwipe} />
+							);
 						}}
-						onSwiped={(cardIndex) => {
-							console.log(cardIndex);
+						onSwiped={() => {
+							isFirstSwipe = false;
 						}}
 						onSwipedLeft={() => {
 							console.log("Swiped left!");
