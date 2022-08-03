@@ -1,61 +1,55 @@
 import React from "react";
-import { StyleSheet, Text, TurboModuleRegistry, View } from "react-native";
+import { View, ImageBackground } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import Card from "./assets/Components/Card";
-import avers from "./assets/imgs/Avers.png";
 import { getCards } from "./cardsGenerator";
 import bgimage from "./assets/imgs/background_image.png";
 
 export default function App() {
 	return (
-		<View
-			style={{
-				flex: 1,
-				justifyContent: "center",
-				backgroundColor: "#fee715",
-				backgroundImage: `url(${bgimage})`,
-			}}
+		<ImageBackground
+			source={require("./assets/imgs/background_image.png")}
+			style={{ height: "100%", width: "100%" }}
 		>
 			<View
 				style={{
-					width: "100%",
-					height: "80%",
+					flex: 1,
+					justifyContent: "center",
 				}}
-				className="cardContainer"
-				nativeID="cardcontainer"
 			>
-				<Swiper
-					containerStyle={{
-						overflow: "visible",
-					}}
-					cardStyle={{
-						fontFamily: "Montserrat, sans-serif",
-						display: "flex",
+				<View
+					style={{
 						width: "100%",
 						height: "100%",
-						alignItems: "center",
-						justifyContent: "center",
 					}}
-					cardVerticalMargin={0}
-					cardHorizontalMargin={0}
-					cards={getCards()}
-					renderCard={(card) => {
-						return <Card card={card} />;
-					}}
-					onSwiped={(cardIndex) => {
-						console.log(cardIndex);
-					}}
-					onSwipedLeft={() => {
-						console.log("Swiped left!");
-					}}
-					onSwipedRight={() => {
-						console.log("Swiped right!");
-					}}
-					cardIndex={0}
-					verticalSwipe={false}
-					backgroundColor={"transparent"}
-				></Swiper>
+					className="cardContainer"
+					nativeID="cardcontainer"
+				>
+					<Swiper
+						containerStyle={{
+							overflow: "visible",
+						}}
+						cardVerticalMargin={0}
+						cardHorizontalMargin={0}
+						cards={getCards()}
+						renderCard={(card) => {
+							return <Card card={card} />;
+						}}
+						onSwiped={(cardIndex) => {
+							console.log(cardIndex);
+						}}
+						onSwipedLeft={() => {
+							console.log("Swiped left!");
+						}}
+						onSwipedRight={() => {
+							console.log("Swiped right!");
+						}}
+						cardIndex={0}
+						verticalSwipe={false}
+						backgroundColor={"transparent"}
+					></Swiper>
+				</View>
 			</View>
-		</View>
+		</ImageBackground>
 	);
 }
