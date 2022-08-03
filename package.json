@@ -23,7 +23,6 @@
     "react-icons": "^4.4.0",
     "react-native": "0.68.2",
     "react-native-deck-swiper": "^2.0.8",
-    "react-native-reanimated": "~2.8.0",
     "react-native-view-overflow": "^0.0.5",
     "react-native-web": "^0.17.7",
     "react-router-dom": "^6.3.0"
