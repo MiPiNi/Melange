@@ -39,6 +39,7 @@ export default function App() {
 						}}
 						cardVerticalMargin={0}
 						cardHorizontalMargin={0}
+						animateCardOpacity={true}
 						cards={getCards(isFirstSwipe)}
 						renderCard={(card) => {
 							return (
@@ -47,12 +48,6 @@ export default function App() {
 						}}
 						onSwiped={() => {
 							isFirstSwipe = false;
-						}}
-						onSwipedLeft={() => {
-							console.log("Swiped left!");
-						}}
-						onSwipedRight={() => {
-							console.log("Swiped right!");
 						}}
 						cardIndex={0}
 						verticalSwipe={false}
