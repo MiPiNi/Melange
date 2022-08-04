@@ -51,6 +51,7 @@ export default function App() {
 						}}
 						cardIndex={0}
 						verticalSwipe={false}
+						infinite={true}
 						backgroundColor={"transparent"}
 					></Swiper>
 				</View>
