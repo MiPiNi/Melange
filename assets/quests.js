@@ -180,8 +180,8 @@ const questsTab = [
 	"Wymień 5 pozycji seksualnych", 
 	"Jak uważasz, który z graczy przepieprza najwięcej na głupoty?", 
 	"Który z graczy jest najbardziej gołosłowny?", 
-	"Co wolisz, miesiąc bez seksu czy miesiąc bez internetu?", 
-	
+	"Co wolisz, miesiąc bez masturbacji czy miesiąc bez internetu?", 
+
 
 
 ];
