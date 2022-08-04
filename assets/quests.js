@@ -157,7 +157,7 @@ const questsTab = [
 	"Jeśli uprawiałeś seks pod prysznicem pijesz", 
 	"Nerdy piją", 
 	"Czy posiadasz nudle swojego byłego lub obecnego partnera. Oświeć nas którego z nich", 
-	"Napisz do rodzica 'mam gieta za 50 zł'", 
+	'Napisz do rodzica "mam gieta za 50 zł"', 
 	"Jak myślisz, który z graczy miał najwięcej partnerek/partnerów seksualnych", 
 	"Najdziwniejsza rzecz, która Cię podnieciła", 
 	"Który gracz według Ciebie jest najmniej godny zaufania", 
