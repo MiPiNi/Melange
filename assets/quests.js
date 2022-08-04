@@ -128,7 +128,7 @@ const questsTab = [
 	"Jeśli urodziłeś się w czerwcu pijesz",
 	"Jeśli urodziłeś się w lipcu pijesz",
 	"Jeśli urodziłeś się w sierpniu pijesz",
-	"Jeśli urodziłeś się w wrześniu pijesz",
+	"Jeśli urodziłeś się we wrześniu pijesz",
 	"Jeśli urodziłeś się w październiku pijesz",
 	"Jeśli urodziłeś się w listopadzie pijesz",
 	"Jeśli urodziłeś się w grudniu pijesz",
