@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { Animated } from "react-native";
 import * as Font from "expo-font";
 import {
 	Text,
@@ -12,7 +13,8 @@ import {
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
 
-const scale = SCREEN_WIDTH / 320;
+const scale =
+	SCREEN_WIDTH > SCREEN_HEIGHT ? SCREEN_WIDTH / 320 : SCREEN_HEIGHT / 320;
 
 export function normalize(size) {
 	const newSize = size * scale;
@@ -22,13 +24,21 @@ export function normalize(size) {
 		return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
 	}
 }
-
 export default class Card extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 	state = {
 		fontsLoaded: false,
+		fadeAnim: new Animated.Value(0),
+	};
+	fadeIn = () => {
+		// Will change fadeAnim value to 1 in 5 seconds
+		Animated.timing(this.state.fadeAnim, {
+			toValue: 1,
+			duration: 400,
+			useNativeDriver: true,
+		}).start();
 	};
 
 	async loadFonts() {
@@ -41,6 +51,7 @@ export default class Card extends React.Component {
 
 	componentDidMount() {
 		this.loadFonts();
+		this.fadeIn();
 	}
 	Avers() {
 		return (
@@ -60,23 +71,28 @@ export default class Card extends React.Component {
 			></Image>
 		);
 	}
+
 	render() {
-		return (
-			<View
-				style={{
-					display: "flex",
-					width: "100%",
-					height: "100%",
-					alignItems: "center",
-					justifyContent: "center",
-				}}
-			>
-				{this.props.isFirstSwipe ? <this.Revers /> : <this.Avers />}
-				<Text selectable={false} style={styles.cardText}>
-					{this.props.card}
-				</Text>
-			</View>
-		);
+		if (this.state.fontsLoaded) {
+			return (
+				<Animated.View
+					style={{
+						opacity: this.state.fadeAnim,
+						display: "flex",
+						width: "100%",
+						height: "100%",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+				>
+					{this.props.isFirstSwipe ? <this.Revers /> : <this.Avers />}
+					<Text selectable={false} style={styles.cardText}>
+						{this.props.card}
+					</Text>
+				</Animated.View>
+			);
+		}
+		return null;
 	}
 }
 

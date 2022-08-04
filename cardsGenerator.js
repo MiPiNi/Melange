@@ -1,20 +1,9 @@
-import raw from "./assets/quests.js";
+import cards from "./assets/quests.js";
 
-const usedNumbers = [];
-
-function getRandomLine() {
-	let lines = raw;
-	let rand = Math.floor(Math.random() * lines.length);
-	while (rand in usedNumbers) {
-		rand = Math.floor(Math.random() * lines.length);
-	}
-
-	return lines[Math.floor(Math.random() * lines.length)];
-}
 export function getCards(isFirstSwipe) {
-	let cards = [];
-	for (let i = 0; i < 10; i++) {
-		cards[i] = getRandomLine();
+	for (let i = cards.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[cards[i], cards[j]] = [cards[j], cards[i]];
 	}
 	isFirstSwipe ? cards.unshift("") : none;
 	return cards;
