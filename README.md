@@ -1,3 +1,3 @@
-# Melagne
+# Melagne (unfinished)
 Drinking game basing on swiping cards mechanics.  
-Created in 2 weeks by @MiPiNi and @Valori-hub to learn React Native
+First version created in 3 days by @MiPiNi and @Valori-hub to learn React Native
